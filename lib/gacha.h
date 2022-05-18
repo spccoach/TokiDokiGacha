@@ -6,12 +6,13 @@
 #include "en_item.h"
 #include "random_gen.h"
 #define MAX_ITEMS 118
+#define MAX_WEIGHT 10000
 
 namespace gacha {
     extern const size_t standard_five_star_character[5];  //  常驻五星人物
     extern const size_t standard_five_star_weapon[10];  //  常驻五星武器
     extern const size_t standard_four_star_weapon[32];  //  常驻四星武器
-    extern const size_t three_g[13],
+    extern const size_t rare_weapon[13],
         nup_four_cg1[11], nup_four_cg2[13], nup_four_cg3[14], nup_four_cg4[15],
         nup_four_cg5[16], nup_four_cg6[17], nup_four_cg7[18], nup_four_cg8[19],
         nup_four_cg9[20], tempga1[30][3], tempga2[30][3], tempga3[30],
@@ -30,9 +31,11 @@ enum class BannerType {
 };
 
 enum class Rarity {
-    Rare,
-    Super_Rare,
-    Superior_Super_Rare
+    Rare_Weapon,
+    Super_Rare_Weapon,
+    Superior_Super_Rare_Weapon,
+    Super_Rare_Character,
+    Superior_Super_Rare_Characeter,
 };
 
 class GachaHelper {
@@ -52,9 +55,14 @@ public:
     void pool_stair_2(ptrdiff_t chosen_banner_p);
     void pool_stair_3(ptrdiff_t chosen_banner_p);
     void pool_stair_4(ptrdiff_t chosen_banner_p);
+
+    //  随机返回入参中的一个成员
     size_t ResultPick(const size_t* kindx, size_t sizekind);
+
     //  加权随机采样
-    Rarity WRSpick(const ptrdiff_t* weightx, size_t nom);
+    Rarity WRSpick(const ptrdiff_t* weightx, bool is_character);
+
+    //  角色祈愿
     void CharacterEventWish();
     void core_f_3();
     void core_f_4();
@@ -64,26 +72,32 @@ public:
     void GachaGacha(BannerType chosen_banner, ptrdiff_t chosen_event_p);
     void GachaInit(BannerType chosen_banner, ptrdiff_t chosen_event_p);
     void CleanUp();
-    void hash_gen();
-    int hash_apply(const ptrdiff_t* sav_p);
     int SetFateWeapon(const unsigned int fate_weapon);
 
-    bool quit, is_noelle, is_five_star_guarantee,
-        four_star_guarantee_number;
-    size_t item_id, temp1, fate_points, up_five, size_nup_four_c, countx,
-        five_count, four_count, four_count_c,
-        four_count_w, max_fivesth, min_fivesth, max_fivecount, min_fivecount,
-        size_nup_four_w, kind_r_ach_11, up_five_g[2], up_four_g[5],
-        nup_four_c[32], five_check[2], four_check[5], pcount[128], four_pity[11];
-    unsigned int resultu, type;
-    ptrdiff_t chosen_event, chosen_banner, unmet4_c, unmet4_w, unmet5_c,
+    bool is_noelle;
+    bool is_five_star_guarantee;  //  标记下一次五星是否是大保底
+    bool is_four_star_guarantee;  //  标记下一次四星是否是大保底
+    size_t item_id, item_kind_symbol, fate_points, up_item_id,
+        size_nup_four_c,  //  当期所有四星角色，包括up角色数目，这个后面换成vector可以拿掉
+        countx,
+         max_fivesth, min_fivesth, max_fivecount, min_fivecount,
+        size_nup_four_w, kind_r_ach_11,
+        //  TODO 共用，不太合理，后面修改
+        probability_increased_five_stars[2],  //  当期UP五星
+        probability_increased_four_stars[5],  //  当期UP四星
+        all_four_star_character[32],  //  当期所有四星角色，包括up角色
+        //  TODO 用于校验是否需要重置保底，后面改个名
+        five_check[2], four_check[5],
+        pcount[128];
+    unsigned int resultu;
+    ptrdiff_t four_star_character_counter, four_star_weapon_counter, unmet5_c,
         unmet5_w, switch_e_should_be, switch_e_sav,
         four_star_assurance_number,  //  此前多少抽没有抽到四星
         five_star_assurance_number,  //  此前多少抽没有抽到五星
         m_five_weight,  //  五星权重
         m_four_weight,  //  四星权重
         m_three_weight,  //  三星权重
-        m_fate_weapon, ach_count[12], hash_out[9];
+        m_fate_weapon, hash_out[9];
     Rarity m_current_rarity;
     signed int error_code;
 };
