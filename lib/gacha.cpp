@@ -1,32 +1,33 @@
-﻿#include "gacha.h"
+﻿#include <array>
+#include "gacha.h"
 
-const size_t gacha::standard_five_star_character[5] = { 0, 1, 2, 3, 4 };
-const size_t gacha::standard_five_star_weapon[10] = { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
-const size_t gacha::standard_four_star_weapon[32] = { 32, 33, 34, 35, 36, 37, 38, 39, 40,
+const std::array<int, 5> gacha::standard_five_star_character = { 0, 1, 2, 3, 4 };
+const std::array<int, 10> gacha::standard_five_star_weapon = { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+const std::array<int, 32> gacha::standard_four_star_weapon = { 32, 33, 34, 35, 36, 37, 38, 39, 40,
                                         41, 42, 43, 44, 45, 46, 47, 48, 49 };
-const size_t gacha::rare_weapon[13] = { 50, 51, 52, 53, 54, 55, 56,
+const std::array<int, 13> gacha::rare_weapon = { 50, 51, 52, 53, 54, 55, 56,
                                      57, 58, 59, 60, 61, 62 };
-const size_t gacha::nup_four_cg1[11] = { 17, 19, 20, 21, 22, 23,
+const std::array<int, 11> gacha::nup_four_cg1 = { 17, 19, 20, 21, 22, 23,
                                           24, 25, 26, 28, 30 };
-const size_t gacha::nup_four_cg2[13] = { 16, 17, 18, 19, 20, 21, 22,
+const std::array<int, 13> gacha::nup_four_cg2 = { 16, 17, 18, 19, 20, 21, 22,
                                           23, 24, 25, 26, 28, 30 };
-const size_t gacha::nup_four_cg3[14] = { 15, 16, 17, 18, 19, 20, 21,
+const std::array<int, 14> gacha::nup_four_cg3 = { 15, 16, 17, 18, 19, 20, 21,
                                           22, 23, 24, 25, 26, 28, 30 };
-const size_t gacha::nup_four_cg4[15] = { 15, 16, 17, 18, 19, 20, 21, 22,
+const std::array<int, 15> gacha::nup_four_cg4 = { 15, 16, 17, 18, 19, 20, 21, 22,
                                           23, 24, 25, 26, 28, 30, 71 };
-const size_t gacha::nup_four_cg5[16] = { 15, 16, 17, 18, 19, 20, 21, 22,
+const std::array<int, 16> gacha::nup_four_cg5 = { 15, 16, 17, 18, 19, 20, 21, 22,
                                           23, 24, 25, 26, 28, 30, 71, 91 };
-const size_t gacha::nup_four_cg6[17] = { 15, 16, 17, 18, 19, 20, 21, 22, 23,
+const std::array<int, 17> gacha::nup_four_cg6 = { 15, 16, 17, 18, 19, 20, 21, 22, 23,
                                           24, 25, 26, 28, 30, 71, 91, 95 };
-const size_t gacha::nup_four_cg7[18] = { 15, 16, 17, 18, 19, 20, 21, 22, 23,
+const std::array<int, 18> gacha::nup_four_cg7 = { 15, 16, 17, 18, 19, 20, 21, 22, 23,
                                           24, 25, 26, 28, 30, 71, 91, 95, 100 };
-const size_t gacha::nup_four_cg8[19] = { 15, 16, 17, 18,  19, 20, 21,
+const std::array<int, 19> gacha::nup_four_cg8 = { 15, 16, 17, 18,  19, 20, 21,
                                           22, 23, 24, 25,  26, 28, 30,
                                           71, 91, 95, 100, 106 };
-const size_t gacha::nup_four_cg9[20] = { 15, 16, 17, 18,  19,  20, 21,
+const std::array<int, 20> gacha::nup_four_cg9 = { 15, 16, 17, 18,  19,  20, 21,
                                           22, 23, 24, 25,  26,  28, 30,
                                           71, 91, 95, 100, 106, 108 };
-const size_t gacha::tempga1[30][3] = {
+const int gacha::tempga1[30][3] = {
     {MAX_ITEMS, MAX_ITEMS, MAX_ITEMS},  // 0
     {22, 26, 30},                       // 1
     {17, 20, 24},                       // 2
@@ -58,7 +59,7 @@ const size_t gacha::tempga1[30][3] = {
     {17, 26, 108},                      // 28
     {15, 28, 91}                        // 29
 };                                      // MID_MOD
-const size_t gacha::tempga2[30][3] = {
+const int gacha::tempga2[30][3] = {
     {MAX_ITEMS, MAX_ITEMS, MAX_ITEMS},  // 0
     {22, 26, 30},                       // 1
     {17, 20, 24},                       // 2
@@ -90,11 +91,11 @@ const size_t gacha::tempga2[30][3] = {
     {17, 26, 108},                      // 28
     {15, 28, 91}                        // 29
 };
-const size_t gacha::tempga3[30] = {
+const int gacha::tempga3[30] = {
     MAX_ITEMS, 63, 64, 65, 66, 67, 68, 69, 0,   70,  63, 65, 66, 72,  64,
     86,        89, 90, 96, 94, 65, 70, 67, 105, 109, 66, 99, 96, 111, 89 };
 
-const size_t gacha::tempgb1[6][3] = {
+const int gacha::tempgb1[6][3] = {
     {MAX_ITEMS, MAX_ITEMS, MAX_ITEMS},  // 0
     {15, 20, 21},                       // 1
     {19, 23, 108},                      // 2
@@ -102,7 +103,7 @@ const size_t gacha::tempgb1[6][3] = {
     {17, 26, 108},                      // 4
     {17, 26, 108},                      // 5
 };
-const size_t gacha::tempgb2[6][3] = {
+const int gacha::tempgb2[6][3] = {
     {MAX_ITEMS, MAX_ITEMS, MAX_ITEMS},  // 0
     {15, 20, 21},                       // 1
     {19, 23, 0},                        // 2
@@ -110,9 +111,9 @@ const size_t gacha::tempgb2[6][3] = {
     {17, 26, 108},                      // 4
     {17, 26, 108},                      // 5
 };
-const size_t gacha::tempgb3[6] = { MAX_ITEMS, 72, 69, 68, 94, 63 };
+const int gacha::tempgb3[6] = { MAX_ITEMS, 72, 69, 68, 94, 63 };
 
-const size_t gacha::tempgc1[29][2] = {
+const int gacha::tempgc1[29][2] = {
     {MAX_ITEMS, MAX_ITEMS},  // 0
     {5, 14},                 // 1
     {7, 11},                 // 2
@@ -143,7 +144,7 @@ const size_t gacha::tempgc1[29][2] = {
     {113, 81},               // 27
     {92, 75}                 // 28
 };
-const size_t gacha::tempgc2[29][5] = {
+const int gacha::tempgc2[29][5] = {
     {MAX_ITEMS, MAX_ITEMS, MAX_ITEMS, MAX_ITEMS, MAX_ITEMS},  // 0
     {34, 38, 40, 44, 48},                                     // 1
     {33, 37, 41, 43, 49},                                     // 2
@@ -174,7 +175,7 @@ const size_t gacha::tempgc2[29][5] = {
     {32, 38, 41, 43, 48},                                     // 27
     {35, 39, 40, 44, 49}                                      // 28
 };
-const size_t gacha::tempgc3[29][5] = {
+const int gacha::tempgc3[29][5] = {
     {MAX_ITEMS, MAX_ITEMS, MAX_ITEMS, MAX_ITEMS, MAX_ITEMS},  // 0
     {34, 38, 40, 44, 48},                                     // 1
     {33, 37, 41, 43, 49},                                     // 2
@@ -205,7 +206,7 @@ const size_t gacha::tempgc3[29][5] = {
     {32, 38, 41, 43, 48},                                     // 27
     {35, 39, 40, 44, 49}                                      // 28
 };
-const size_t gacha::tempgc4[29][2] = {
+const int gacha::tempgc4[29][2] = {
     {MAX_ITEMS, MAX_ITEMS},  // 0
     {5, 14},                 // 1
     {7, 11},                 // 2
@@ -236,30 +237,30 @@ const size_t gacha::tempgc4[29][2] = {
     {MAX_ITEMS, MAX_ITEMS},  // 27
     {MAX_ITEMS, MAX_ITEMS}   // 28
 };
-const size_t gacha::nup_four_cg31[14] = { 17, 19, 20, 21, 22, 23, 24,
+const int gacha::nup_four_cg31[14] = { 17, 19, 20, 21, 22, 23, 24,
                                            25, 26, 27, 28, 29, 30, 31 };
-const size_t gacha::nup_four_cg32[16] = { 16, 17, 18, 19, 20, 21, 22, 23,
+const int gacha::nup_four_cg32[16] = { 16, 17, 18, 19, 20, 21, 22, 23,
                                            24, 25, 26, 27, 28, 29, 30, 31 };
-const size_t gacha::nup_four_cg33[17] = { 15, 16, 17, 18, 19, 20, 21, 22, 23,
+const int gacha::nup_four_cg33[17] = { 15, 16, 17, 18, 19, 20, 21, 22, 23,
                                            24, 25, 26, 27, 28, 29, 30, 31 };
-const size_t gacha::nup_four_cg34[18] = { 15, 16, 17, 18, 19, 20, 21, 22, 23,
+const int gacha::nup_four_cg34[18] = { 15, 16, 17, 18, 19, 20, 21, 22, 23,
                                            24, 25, 26, 27, 28, 29, 30, 31, 71 };
-const size_t gacha::nup_four_cg35[19] = {
+const int gacha::nup_four_cg35[19] = {
     15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 71, 91 };
-const size_t gacha::nup_four_cg36[20] = { 15, 16, 17, 18, 19, 20, 21,
+const int gacha::nup_four_cg36[20] = { 15, 16, 17, 18, 19, 20, 21,
                                            22, 23, 24, 25, 26, 27, 28,
                                            29, 30, 31, 71, 91, 95 };
-const size_t gacha::nup_four_cg37[21] = { 15, 16, 17, 18, 19, 20, 21,
+const int gacha::nup_four_cg37[21] = { 15, 16, 17, 18, 19, 20, 21,
                                            22, 23, 24, 25, 26, 27, 28,
                                            29, 30, 31, 71, 91, 95, 100 };
-const size_t gacha::nup_four_cg38[22] = { 15, 16, 17, 18, 19,  20, 21, 22,
+const int gacha::nup_four_cg38[22] = { 15, 16, 17, 18, 19,  20, 21, 22,
                                            23, 24, 25, 26, 27,  28, 29, 30,
                                            31, 71, 91, 95, 100, 106 };
-const size_t gacha::nup_four_cg39[23] = { 15, 16, 17, 18, 19,  20,  21, 22,
+const int gacha::nup_four_cg39[23] = { 15, 16, 17, 18, 19,  20,  21, 22,
                                            23, 24, 25, 26, 27,  28,  29, 30,
                                            31, 71, 91, 95, 100, 106, 108 };
-const ptrdiff_t gacha::tempga4[9] = { 0, 1, 0, 2, 3, 0, 4, 5, 0 };
-const ptrdiff_t gacha::tempgb4[6] = { 0, 22, 24, 25, 27, 28 };
+const int gacha::tempga4[9] = { 0, 1, 0, 2, 3, 0, 4, 5, 0 };
+const int gacha::tempgb4[6] = { 0, 22, 24, 25, 27, 28 };
 
 const gacha::Rarity characeter_rarity[3] = { gacha::Rarity::Superior_Super_Rare_Characeter,
     gacha::Rarity::Super_Rare_Character, gacha::Rarity::Rare_Weapon };
@@ -408,182 +409,128 @@ void gacha::GachaHelper::Init() {
     item_kind_symbol = 0;
     fate_points = 0;
     up_item_id = 0;
-    size_nup_four_c = 1;
     countx = 0;
-    max_fivesth = 1;
-    min_fivesth = 1;
-    max_fivecount = 1;
-    min_fivecount = 1;
-    size_nup_four_w = 18;
-    kind_r_ach_11 = 0;
-    memset(probability_increased_five_stars, 0, sizeof(probability_increased_five_stars));
-    memset(probability_increased_four_stars, 0, sizeof(probability_increased_four_stars));
-    memset(all_four_star_character, 0, sizeof(all_four_star_character));
-    five_check[0] = MAX_ITEMS;
-    five_check[1] = MAX_ITEMS;
-    for (auto i : four_check) {
-        i = MAX_ITEMS;
-    }
-    memset(pcount, 0, sizeof(pcount));
 
-    resultu = 0;
     m_current_rarity = gacha::Rarity::Rare_Weapon;
     four_star_character_counter = 0;
     four_star_weapon_counter = 0;
     unmet5_c = 0;
     unmet5_w = 0;
-    switch_e_should_be = 0;
-    switch_e_sav = 0;
     four_star_assurance_number = 1;
     five_star_assurance_number = 1;
-    m_five_weight = 0;
-    m_four_weight = 0;
-    m_three_weight = 0;
     m_fate_weapon = 0;
-    memset(hash_out, 0, sizeof(hash_out));
     error_code = 0;
 }
 
-void gacha::GachaHelper::ini_ams(size_t* in, size_t ins, const size_t* out) {
-  for (size_t i = 0; i < ins; i++) {
+void gacha::GachaHelper::ini_ams(int* in, size_t ins, const int* out) {
+  for (int i = 0; i < ins; i++) {
     in[i] = out[i];
   }
 }  // for of the same size
 
-void gacha::GachaHelper::set_pool_1(const ptrdiff_t sw, const size_t size_nup_four_c_p,
-                         const size_t* nup_four_cgm) {
-  up_item_id = tempga3[sw];
-  size_nup_four_c = size_nup_four_c_p;
-  ini_ams(probability_increased_four_stars, 3, tempga1[sw]);
-  ini_ams(all_four_star_character, size_nup_four_c, nup_four_cgm);
-  ini_ams(four_check, 3, tempga2[sw]);
-}
-
-void gacha::GachaHelper::set_pool_2(const ptrdiff_t sw, const size_t size_nup_four_c_p,
-                         const size_t* nup_four_cgm) {
+void gacha::GachaHelper::set_pool_2(const int64_t sw, const int size_nup_four_c_p,
+                         const int* nup_four_cgm) {
   up_item_id = tempgb3[sw];
-  size_nup_four_c = size_nup_four_c_p;
-  ini_ams(probability_increased_four_stars, 3, tempgb1[sw]);
-  ini_ams(all_four_star_character, size_nup_four_c, nup_four_cgm);
-  ini_ams(four_check, 3, tempgb2[sw]);
+  ini_ams(probability_increased_four_stars.data(), 3, tempgb1[sw]);
+  all_four_star_character.reserve(size_nup_four_c_p);
+  ini_ams(all_four_star_character.data(), all_four_star_character.size(), nup_four_cgm);
+  ini_ams(four_check.data(), 3, tempgb2[sw]);
 }
 
-void gacha::GachaHelper::set_pool_3(const ptrdiff_t sw, size_t size_nup_four_c_p,
-                         const size_t* nup_four_cgm) {
-  ini_ams(probability_increased_five_stars, 2, tempgc1[sw]);
-  size_nup_four_c = size_nup_four_c_p;
-  ini_ams(probability_increased_four_stars, 5, tempgc2[sw]);
-  ini_ams(all_four_star_character, size_nup_four_c, nup_four_cgm);
-  ini_ams(four_check, 5, tempgc3[sw]);
-  ini_ams(five_check, 2, tempgc4[sw]);
+void gacha::GachaHelper::set_pool_3(const int64_t sw, int size_nup_four_c_p,
+                         const int* nup_four_cgm) {
+  ini_ams(probability_increased_five_stars.data(), 2, tempgc1[sw]);
+  ini_ams(probability_increased_four_stars.data(), 5, tempgc2[sw]);
+  all_four_star_character.reserve(size_nup_four_c_p);
+  ini_ams(all_four_star_character.data(), all_four_star_character.size(), nup_four_cgm);
+  ini_ams(four_check.data(), 5, tempgc3[sw]);
+  ini_ams(five_check.data(), 2, tempgc4[sw]);
 }
 
-void gacha::GachaHelper::pool_stair_1(ptrdiff_t chosen_event_p) {
-  if (chosen_event_p > 0 && chosen_event_p < 5) {
-    set_pool_1(chosen_event_p, 11, nup_four_cg1);
-  } else if (chosen_event_p < 12) {
-    set_pool_1(chosen_event_p, 13, nup_four_cg2);
-  } else if (chosen_event_p < 14) {
-    set_pool_1(chosen_event_p, 14, nup_four_cg3);
-  } else if (chosen_event_p < 18) {
-    set_pool_1(chosen_event_p, 15, nup_four_cg4);
-  } else if (chosen_event_p < 20) {
-    set_pool_1(chosen_event_p, 16, nup_four_cg5);
-  } else if (chosen_event_p < 22) {
-    set_pool_1(chosen_event_p, 17, nup_four_cg6);
-  } else if (chosen_event_p < 24) {
-    set_pool_1(chosen_event_p, 18, nup_four_cg7);
-  } else if (chosen_event_p < 26) {
-    set_pool_1(chosen_event_p, 19, nup_four_cg8);
-  } else if (chosen_event_p < 30) {
-    set_pool_1(chosen_event_p, 20, nup_four_cg9);
-  } else {
-    error_code = 5;
-  }
-}
-
-void gacha::GachaHelper::pool_stair_2(ptrdiff_t chosen_event_p) {
+void gacha::GachaHelper::pool_stair_2(int64_t chosen_event_p) {
   if (chosen_event_p > 0 && chosen_event_p < 2) {
-    set_pool_2(chosen_event_p, 18, nup_four_cg7);
+    set_pool_2(chosen_event_p, 18, nup_four_cg7.data());
   } else if (chosen_event_p < 4) {
-    set_pool_2(chosen_event_p, 19, nup_four_cg8);
+    set_pool_2(chosen_event_p, 19, nup_four_cg8.data());
   } else if (chosen_event_p < 6) {
-    set_pool_2(chosen_event_p, 20, nup_four_cg9);
+    set_pool_2(chosen_event_p, 20, nup_four_cg9.data());
   } else {
     error_code = 5;
   }
 }
 
-void gacha::GachaHelper::pool_stair_3(ptrdiff_t chosen_event_p) {
+void gacha::GachaHelper::pool_stair_3(int64_t chosen_event_p) {
   if (chosen_event_p > 0 && chosen_event_p < 5) {
-    set_pool_3(chosen_event_p, 11, nup_four_cg1);
+    set_pool_3(chosen_event_p, 11, nup_four_cg1.data());
   } else if (chosen_event_p < 11) {
-    set_pool_3(chosen_event_p, 13, nup_four_cg2);
+    set_pool_3(chosen_event_p, 13, nup_four_cg2.data());
   } else if (chosen_event_p < 13) {
-    set_pool_3(chosen_event_p, 14, nup_four_cg3);
+    set_pool_3(chosen_event_p, 14, nup_four_cg3.data());
   } else if (chosen_event_p < 17) {
-    set_pool_3(chosen_event_p, 15, nup_four_cg4);
+    set_pool_3(chosen_event_p, 15, nup_four_cg4.data());
   } else if (chosen_event_p < 19) {
-    set_pool_3(chosen_event_p, 16, nup_four_cg5);
+    set_pool_3(chosen_event_p, 16, nup_four_cg5.data());
   } else if (chosen_event_p < 21) {
-    set_pool_3(chosen_event_p, 17, nup_four_cg6);
+    set_pool_3(chosen_event_p, 17, nup_four_cg6.data());
   } else if (chosen_event_p < 23) {
-    set_pool_3(chosen_event_p, 18, nup_four_cg7);
+    set_pool_3(chosen_event_p, 18, nup_four_cg7.data());
   } else if (chosen_event_p < 25) {
-    set_pool_3(chosen_event_p, 19, nup_four_cg8);
+    set_pool_3(chosen_event_p, 19, nup_four_cg8.data());
   } else if (chosen_event_p < 29) {
-    set_pool_3(chosen_event_p, 20, nup_four_cg9);
+    set_pool_3(chosen_event_p, 20, nup_four_cg9.data());
   } else {
     error_code = 5;
   }
 }
-void gacha::GachaHelper::pool_stair_4(ptrdiff_t chosen_event_p) {
+void gacha::GachaHelper::pool_stair_4(int64_t chosen_event_p) {
   switch (chosen_event_p) {
     case 1: {
-      size_nup_four_c = 14;
-      ini_ams(all_four_star_character, 14, nup_four_cg31);
+        all_four_star_character.reserve(14);
+      ini_ams(all_four_star_character.data(), 14, nup_four_cg31);
     } break;
     case 2: {
-      size_nup_four_c = 16;
-      ini_ams(all_four_star_character, 16, nup_four_cg32);
+        all_four_star_character.reserve(16);
+      ini_ams(all_four_star_character.data(), 16, nup_four_cg32);
     } break;
     case 3: {
-      size_nup_four_c = 17;
-      ini_ams(all_four_star_character, 17, nup_four_cg33);
+        all_four_star_character.reserve(17);
+      ini_ams(all_four_star_character.data(), 17, nup_four_cg33);
     } break;
     case 4: {
-      size_nup_four_c = 18;
-      ini_ams(all_four_star_character, 18, nup_four_cg34);
+        all_four_star_character.reserve(18);
+      ini_ams(all_four_star_character.data(), 18, nup_four_cg34);
     } break;
     case 5: {
-      size_nup_four_c = 19;
-      ini_ams(all_four_star_character, 19, nup_four_cg35);
+        all_four_star_character.reserve(19);
+      ini_ams(all_four_star_character.data(), 19, nup_four_cg35);
     } break;
     case 6: {
-      size_nup_four_c = 20;
-      ini_ams(all_four_star_character, 20, nup_four_cg36);
+        all_four_star_character.reserve(20);
+      ini_ams(all_four_star_character.data(), 20, nup_four_cg36);
     } break;
     case 7: {
-      size_nup_four_c = 21;
-      ini_ams(all_four_star_character, 21, nup_four_cg37);
+        all_four_star_character.reserve(21);
+      ini_ams(all_four_star_character.data(), 21, nup_four_cg37);
     } break;
     case 8: {
-      size_nup_four_c = 22;
-      ini_ams(all_four_star_character, 22, nup_four_cg38);
+        all_four_star_character.reserve(22);
+      ini_ams(all_four_star_character.data(), 22, nup_four_cg38);
     } break;
     case 9: {
-      size_nup_four_c = 22;
-      ini_ams(all_four_star_character, 23, nup_four_cg39);
+        all_four_star_character.reserve(23);
+      ini_ams(all_four_star_character.data(), 23, nup_four_cg39);
     } break;
     default: {
       error_code = 102;
     }
   }
 }
-size_t gacha::GachaHelper::ResultPick(const size_t* kindx, size_t sizekind) {
-    size_t kindout = kindx[0];
-    size_t index = 1;
-    for (; index < sizekind; ++index) {
+int gacha::GachaHelper::ResultPick(const int* kindx, size_t sizekind) {
+    if (sizekind == 0) {
+        // TODO error
+    }
+    int kindout = kindx[0];   
+    for (int index = 1; index < sizekind; ++index) {
         const signed int random_value = static_cast<signed int>(
             randomgen::generatorz() % (static_cast<unsigned long long int>(index) + 1));
         if (random_value == 0) {
@@ -593,8 +540,13 @@ size_t gacha::GachaHelper::ResultPick(const size_t* kindx, size_t sizekind) {
     return kindout;
 }
 
-gacha::Rarity gacha::GachaHelper::WRSpick(const ptrdiff_t* weightx, bool is_character) {
-    ptrdiff_t ceiling = 1;
+void AAA(const std::array<int, 10> a) {
+
+
+}
+
+gacha::Rarity gacha::GachaHelper::WRSpick(const std::vector <int>& vec_weight, bool is_character) {
+    int ceiling = 1;
     int count_of_kind = 0;
 
     if (is_character) {
@@ -603,20 +555,24 @@ gacha::Rarity gacha::GachaHelper::WRSpick(const ptrdiff_t* weightx, bool is_char
         count_of_kind = sizeof(four_star_rarity) / sizeof(gacha::Rarity);
     }
 
-    for (size_t inin = 0; inin < count_of_kind; inin++) {
-        ceiling += weightx[inin];
+    if (count_of_kind > vec_weight.size()) {
+        //  TODO 抛个异常，最后实现
+    }
+
+    for (auto &weight : vec_weight) {
+        ceiling += weight;
     }
 
     if (is_character && ceiling > MAX_WEIGHT) {
         ceiling = MAX_WEIGHT;
     }
-    ptrdiff_t randomn = static_cast<ptrdiff_t>(randomgen::generatorz() % static_cast<size_t>(ceiling));
+    int64_t randomn = static_cast<int64_t>(randomgen::generatorz() % static_cast<int>(ceiling));
     gacha::Rarity results = gacha::Rarity::Rare_Weapon;
     if (!is_character) {
         results = Rarity::Super_Rare_Weapon;
     }
-    for (size_t index = 0; index < count_of_kind; ++index) {
-        if (randomn < weightx[index]) {
+    for (int index = 0; index < count_of_kind; ++index) {
+        if (randomn < vec_weight[index]) {
             if (is_character) {
                 results = characeter_rarity[index];
             }
@@ -626,34 +582,28 @@ gacha::Rarity gacha::GachaHelper::WRSpick(const ptrdiff_t* weightx, bool is_char
             break;
         }
         else {
-            randomn -= weightx[index];
+            randomn -= vec_weight[index];
         }
     }
     return results;
 }
 
-void gacha::GachaHelper::CharacterEventWish() {
-    //  根据已经抽的次数，计算四星和五星的权重
-    if (five_star_assurance_number < 74) {
-        //  五星默认出货概率为0.6%
-        m_five_weight = 60;
-    }
-    else {
-        //  74抽之后，每抽增加6%的五星出货概率
-        m_five_weight = 60 + 600 * (five_star_assurance_number - 73);
-    }
-    if (four_star_assurance_number < 9) {
-        //  四星默认出货概率为5.1%
-        m_four_weight = 510;
-    }
-    else {
-        //  第9抽开始每抽增加51%的出货概率
-        m_four_weight = 510 + 5100 * (four_star_assurance_number - 8);
-    }
-    //  角色池三星权重
-    m_three_weight = 9430;
+void gacha::CharacterGachaHelper::CharacterEventWish() {
+    int five_weight = 60;  //  五星权重，五星默认出货概率为0.6%
+    int four_weight = 510;  //  四星权重，四星默认出货概率为5.1%
+    int three_weight = 9430;  //  三星权重
 
-    const ptrdiff_t weight[3] = { m_five_weight, m_four_weight, m_three_weight };
+    //  根据已经抽的次数，计算四星和五星的权重
+    if (five_star_assurance_number >= 74) {
+        //  74抽之后，每抽增加6%的五星出货概率
+        five_weight += 600 * (five_star_assurance_number - 73);
+    }
+    if (!(four_star_assurance_number >= 9)){
+        //  第9抽开始每抽增加51%的四星出货概率
+        four_weight += 5100 * (four_star_assurance_number - 8);
+    }
+
+    std::vector <int> weight = { five_weight, four_weight, three_weight };
     //  加权随机抽取结果
     m_current_rarity = WRSpick(weight, true);
     switch (m_current_rarity) {
@@ -667,9 +617,12 @@ void gacha::GachaHelper::CharacterEventWish() {
                 is_five_star_guarantee = false;
             } else {
                 //  如果不是up角色，就从常驻5星中随机出一个
-                item_id = ResultPick(standard_five_star_character, 5);
-                is_five_star_guarantee = (item_id != five_check[0]);
+                item_id = ResultPick(standard_five_star_character.data(), standard_five_star_character.size());
+                is_five_star_guarantee = (
+                    std::find(five_check.begin(), five_check.end(), item_id) == five_check.end());
             }
+
+            ++four_star_character_counter;
         } break;
         case gacha::Rarity::Super_Rare_Character: {
             //  重置保底计数器
@@ -677,28 +630,27 @@ void gacha::GachaHelper::CharacterEventWish() {
             //  50%概率是UP角色
             if (is_four_star_guarantee || item_kind_symbol < 1) {
                 four_star_character_counter = 0;
-                item_id = ResultPick(probability_increased_four_stars, 3);
+                item_id = ResultPick(probability_increased_four_stars.data(),
+                    probability_increased_four_stars.size());
                 is_four_star_guarantee = false;
             } else {
                 //  平稳机制，防止一直出武器或者一直出角色
                 if (four_star_character_counter < 17 && four_star_weapon_counter < 17) {
                     //  角色和武器次数都小于16的情况下，武器和角色权重相同
-                    const ptrdiff_t weight_four_star[2] = {255, 255};
+                    std::vector <int> weight_four_star = {255, 255};
                     switch (WRSpick(weight_four_star, false)) {
                         case gacha::Rarity::Super_Rare_Character: {
                             //  重置角色计数器
                             four_star_character_counter = 0;
-                            item_id = ResultPick(all_four_star_character, size_nup_four_c);
-                            if ((item_id == four_check[0] || item_id == four_check[1] ||
-                                item_id == four_check[2])) {
-                                is_four_star_guarantee = false;
-                            } else {
-                                is_four_star_guarantee = true;
-                            }
+                            item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
+                            is_four_star_guarantee =
+                                std::find(four_check.begin(), four_check.end(), item_id) == four_check.end();
+
                         } break;
                         case gacha::Rarity::Super_Rare_Weapon: {
                             four_star_weapon_counter = 0;
-                            item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+                            item_id = ResultPick(standard_four_star_weapon.data(),
+                                standard_four_star_weapon.size());
                             is_four_star_guarantee = true;
                         } break;
                         default: {
@@ -707,22 +659,18 @@ void gacha::GachaHelper::CharacterEventWish() {
                         }
                     }
                 } else if (four_star_character_counter > 16) {
-                    const ptrdiff_t weight1[2] = {255 + 2550 * (four_star_character_counter - 16), 255};
+                    std::vector <int> weight1 = {(255 + 2550 * (four_star_character_counter - 16)), 255};
                     switch (WRSpick(weight1, false)) {
                         case gacha::Rarity::Super_Rare_Character: {
                             four_star_character_counter = 0;
-                            item_id = ResultPick(all_four_star_character, size_nup_four_c);
-                            if ((item_id == four_check[0] || item_id == four_check[1] ||
-                                item_id == four_check[2] || item_id == four_check[3] ||
-                                item_id == four_check[4])) {
-                            is_four_star_guarantee = false;
-                            } else {
-                            is_four_star_guarantee = true;
-                            }
+                            item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
+                            is_four_star_guarantee =
+                                std::find(four_check.begin(), four_check.end(), item_id) == four_check.end();
                         } break;
                         case gacha::Rarity::Super_Rare_Weapon: {
                             four_star_weapon_counter = 0;
-                            item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+                            item_id = ResultPick(standard_four_star_weapon.data(),
+                                standard_four_star_weapon.size());
                             is_four_star_guarantee = true;
                         } break;
                         default: {
@@ -730,23 +678,20 @@ void gacha::GachaHelper::CharacterEventWish() {
                         }
                     }
                 } else {
-                    const ptrdiff_t weight1[2] = {255 + 2550 * (four_star_weapon_counter - 16), 255};
+                    std::vector <int>weight1 = {255 + 2550 * (four_star_weapon_counter - 16), 255};
                     switch (WRSpick(weight1, false)) {
+                        //  TODO 这个地方容易让人引起误解，后面考虑下
                         case gacha::Rarity::Super_Rare_Character: {
                             four_star_weapon_counter = 0;
-                            item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+                            item_id = ResultPick(standard_four_star_weapon.data(),
+                                standard_four_star_weapon.size());
                             is_four_star_guarantee = true;
                         } break;
                         case gacha::Rarity::Super_Rare_Weapon: {
                             four_star_character_counter = 0;
-                            item_id = ResultPick(all_four_star_character, size_nup_four_c);
-                            if ((item_id == four_check[0] || item_id == four_check[1] ||
-                                item_id == four_check[2] || item_id == four_check[3] ||
-                                item_id == four_check[4])) {
-                                is_four_star_guarantee = false;
-                            } else {
-                                is_four_star_guarantee = true;
-                            }
+                            item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
+                            is_four_star_guarantee =
+                                std::find(four_check.begin(), four_check.end(), item_id) == four_check.end();
                         } break;
                         default: {
                             error_code = 4;
@@ -757,7 +702,7 @@ void gacha::GachaHelper::CharacterEventWish() {
         } break;
         case gacha::Rarity::Rare_Weapon:
             //  随机一个三星武器
-            item_id = ResultPick(rare_weapon, 13);
+            item_id = ResultPick(rare_weapon.data(), rare_weapon.size());
             break;
         default: {
             error_code = 3;
@@ -766,22 +711,25 @@ void gacha::GachaHelper::CharacterEventWish() {
 }
 
 void gacha::GachaHelper::core_f_3() {
+    int five_weight = 0; //  五星权重
+    int four_weight = 0;  //  四星权重
+    int three_weight = 0;  //  三星权重
   if (five_star_assurance_number < 63) {
-    m_five_weight = 70;
+    five_weight = 70;
   } else if (five_star_assurance_number < 74) {
-    m_five_weight = 70 + 700 * (five_star_assurance_number - 62);
+    five_weight = 70 + 700 * (five_star_assurance_number - 62);
   } else {
-    m_five_weight = 7770 + 350 * (five_star_assurance_number - 73);
+    five_weight = 7770 + 350 * (five_star_assurance_number - 73);
   }
   if (four_star_assurance_number < 8) {
-    m_four_weight = 600;
+    four_weight = 600;
   } else if (four_star_assurance_number == 8) {
-    m_four_weight = 6600;
+    four_weight = 6600;
   } else {
-    m_four_weight = 6600 + 3000 * (four_star_assurance_number - 8);
+    four_weight = 6600 + 3000 * (four_star_assurance_number - 8);
   }
-  m_three_weight = 9330;
-  const ptrdiff_t weight[3] = {m_five_weight, m_four_weight, m_three_weight};
+  three_weight = 9330;
+  std::vector <int>weight = {five_weight, four_weight, three_weight};
   m_current_rarity = WRSpick(weight, true);
   switch (m_current_rarity) {
     case gacha::Rarity::Superior_Super_Rare_Characeter: {     
@@ -792,7 +740,8 @@ void gacha::GachaHelper::core_f_3() {
           fate_points = 0;
           is_five_star_guarantee = false;
         } else if (is_five_star_guarantee || item_kind_symbol < 3) {
-          item_id = ResultPick(probability_increased_five_stars, 2);
+          item_id = ResultPick(probability_increased_five_stars.data(),
+              probability_increased_five_stars.size());
           if (item_id == probability_increased_five_stars[m_fate_weapon - 1]) {
             fate_points = 0;
           } else {
@@ -800,7 +749,7 @@ void gacha::GachaHelper::core_f_3() {
           }
           is_five_star_guarantee = false;
         } else {
-          item_id = ResultPick(standard_five_star_weapon, 10);
+          item_id = ResultPick(standard_five_star_weapon.data(), standard_five_star_weapon.size());
           if (item_id == probability_increased_five_stars[m_fate_weapon - 1]) {
             fate_points = 0;
           } else {
@@ -814,10 +763,11 @@ void gacha::GachaHelper::core_f_3() {
         }
       } else if (m_fate_weapon == 0) {
         if (is_five_star_guarantee || item_kind_symbol < 3) {
-          item_id = ResultPick(probability_increased_five_stars, 2);
+          item_id = ResultPick(probability_increased_five_stars.data(),
+              probability_increased_five_stars.size());
           is_five_star_guarantee = false;
         } else {
-          item_id = ResultPick(standard_five_star_weapon, 10);
+          item_id = ResultPick(standard_five_star_weapon.data(), standard_five_star_weapon.size());
           if ((item_id == five_check[0] || item_id == five_check[1])) {
             is_five_star_guarantee = false;
           } else {
@@ -832,20 +782,21 @@ void gacha::GachaHelper::core_f_3() {
       four_star_assurance_number = 0;
       if (is_four_star_guarantee || item_kind_symbol < 3) {
         four_star_weapon_counter = 0;
-        item_id = ResultPick(probability_increased_four_stars, 5);
+        item_id = ResultPick(probability_increased_four_stars.data(),
+            probability_increased_four_stars.size());
         is_four_star_guarantee = false;
       } else {
         if (four_star_character_counter < 15 && four_star_weapon_counter < 15) {
-          const ptrdiff_t weight2[2] = {300, 300};
+            std::vector <int>weight2 = {300, 300};
           switch (WRSpick(weight2, false)) {
             case gacha::Rarity::Super_Rare_Character: {
               four_star_character_counter = 0;
-              item_id = ResultPick(all_four_star_character, size_nup_four_c);
+              item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
               is_four_star_guarantee = true;
             } break;
             case gacha::Rarity::Super_Rare_Weapon: {
               four_star_weapon_counter = 0;
-              item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+              item_id = ResultPick(standard_four_star_weapon.data(), standard_four_star_weapon.size());
               if ((item_id == four_check[0] || item_id == four_check[1] ||
                    item_id == four_check[2] || item_id == four_check[3] ||
                    item_id == four_check[4])) {
@@ -859,16 +810,16 @@ void gacha::GachaHelper::core_f_3() {
             }
           }
         } else if (four_star_character_counter > 14) {
-          const ptrdiff_t weight2[2] = {300 + 3000 * (four_star_character_counter - 14), 300};
+            std::vector <int>weight2= {300 + 3000 * (four_star_character_counter - 14), 300};
           switch (WRSpick(weight2, false)) {
             case gacha::Rarity::Super_Rare_Character: {
               four_star_character_counter = 0;
-              item_id = ResultPick(all_four_star_character, size_nup_four_c);
+              item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
               is_four_star_guarantee = true;
             } break;
             case gacha::Rarity::Super_Rare_Weapon: {
               four_star_weapon_counter = 0;
-              item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+              item_id = ResultPick(standard_four_star_weapon.data(), standard_four_star_weapon.size());
               if ((item_id == four_check[0] || item_id == four_check[1] ||
                    item_id == four_check[2] || item_id == four_check[3] ||
                    item_id == four_check[4])) {
@@ -882,11 +833,11 @@ void gacha::GachaHelper::core_f_3() {
             }
           }
         } else {
-          const ptrdiff_t weight2[2] = {300 + 3000 * (four_star_weapon_counter - 14), 300};
+            std::vector <int>weight2 = {300 + 3000 * (four_star_weapon_counter - 14), 300};
           switch (WRSpick(weight2, false)) {
             case gacha::Rarity::Super_Rare_Character: {
               four_star_weapon_counter = 0;
-              item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+              item_id = ResultPick(standard_four_star_weapon.data(), standard_four_star_weapon.size());
               if ((item_id == four_check[0] || item_id == four_check[1] ||
                    item_id == four_check[2] || item_id == four_check[3] ||
                    item_id == four_check[4])) {
@@ -897,7 +848,7 @@ void gacha::GachaHelper::core_f_3() {
             } break;
             case gacha::Rarity::Super_Rare_Weapon: {
               four_star_character_counter = 0;
-              item_id = ResultPick(all_four_star_character, size_nup_four_c);
+              item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
               is_four_star_guarantee = true;
             } break;
             default: {
@@ -909,7 +860,7 @@ void gacha::GachaHelper::core_f_3() {
     } break;
     case gacha::Rarity::Rare_Weapon:
         //  随机一个三星武器
-        item_id = ResultPick(rare_weapon, 13);
+        item_id = ResultPick(rare_weapon.data(), rare_weapon.size());
       break;
     default: {
       error_code = 3;
@@ -918,63 +869,66 @@ void gacha::GachaHelper::core_f_3() {
 }
 
 void gacha::GachaHelper::core_f_4() {
+    int five_weight = 0; //  五星权重
+    int four_weight = 0;  //  四星权重
+    int three_weight = 0;  //  三星权重
   if (five_star_assurance_number < 74) {
-    m_five_weight = 60;
+    five_weight = 60;
   } else {
-    m_five_weight = 60 + 600 * (five_star_assurance_number - 73);
+    five_weight = 60 + 600 * (five_star_assurance_number - 73);
   }
   if (four_star_assurance_number < 9) {
-    m_four_weight = 510;
+    four_weight = 510;
   } else {
-    m_four_weight = 510 + 5100 * (four_star_assurance_number - 8);
+    four_weight = 510 + 5100 * (four_star_assurance_number - 8);
   }
-  m_three_weight = 9430;
-  const ptrdiff_t weight[3] = {m_five_weight, m_four_weight, m_three_weight};
+  three_weight = 9430;
+  std::vector <int>weight = {five_weight, four_weight, three_weight};
   m_current_rarity = WRSpick(weight, true);
   switch (m_current_rarity) {
     case gacha::Rarity::Superior_Super_Rare_Characeter: {
       
       five_star_assurance_number = 0;
       if (unmet5_c < 147 && unmet5_w < 147) {
-        const ptrdiff_t weight4[2] = {30, 30};
+          std::vector <int> weight4 = {30, 30};
         switch (WRSpick(weight4, false)) {
           case gacha::Rarity::Super_Rare_Character: {
             unmet5_c = 0;
-            item_id = ResultPick(standard_five_star_character, 5);
+            item_id = ResultPick(standard_five_star_character.data(), standard_five_star_character.size());
           } break;
           case gacha::Rarity::Super_Rare_Weapon: {
             unmet5_w = 0;
-            item_id = ResultPick(standard_five_star_weapon, 10);
+            item_id = ResultPick(standard_five_star_weapon.data(), standard_five_star_weapon.size());
           } break;
           default: {
             error_code = 4;
           }
         }
       } else if (unmet5_c > 146) {
-        const ptrdiff_t weight4[2] = {30 + 300 * (unmet5_c - 146), 30};
+          std::vector <int> weight4 = {30 + 300 * (unmet5_c - 146), 30};
         switch (WRSpick(weight4, false)) {
           case gacha::Rarity::Super_Rare_Character: {
             unmet5_c = 0;
-            item_id = ResultPick(standard_five_star_character, 5);
+            item_id = ResultPick(standard_five_star_character.data(), standard_five_star_character.size());
           } break;
           case gacha::Rarity::Super_Rare_Weapon: {
             unmet5_w = 0;
-            item_id = ResultPick(standard_five_star_weapon, 10);
+            item_id = ResultPick(standard_five_star_weapon.data(), standard_five_star_weapon.size());
           } break;
           default: {
             error_code = 4;
           }
         }
       } else {
-        const ptrdiff_t weight4[2] = {30 + 300 * (unmet5_w - 146), 30};
+          std::vector <int> weight4 = {30 + 300 * (unmet5_w - 146), 30};
         switch (WRSpick(weight4, false)) {
           case gacha::Rarity::Super_Rare_Character: {
             unmet5_w = 0;
-            item_id = ResultPick(standard_five_star_weapon, 10);
+            item_id = ResultPick(standard_five_star_weapon.data(), standard_five_star_weapon.size());
           } break;
           case gacha::Rarity::Super_Rare_Weapon: {
             unmet5_c = 0;
-            item_id = ResultPick(standard_five_star_character, 5);
+            item_id = ResultPick(standard_five_star_character.data(), standard_five_star_character.size());
           } break;
           default: {
             error_code = 4;
@@ -985,45 +939,45 @@ void gacha::GachaHelper::core_f_4() {
     case gacha::Rarity::Super_Rare_Character: {
       four_star_assurance_number = 0;
       if (four_star_character_counter < 17 && four_star_weapon_counter < 17) {
-        const ptrdiff_t weight3[2] = {255, 255};
+          std::vector <int> weight3 = {255, 255};
         switch (WRSpick(weight3, false)) {
           case gacha::Rarity::Super_Rare_Character: {
             four_star_character_counter = 0;
-            item_id = ResultPick(all_four_star_character, size_nup_four_c);
+            item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
           } break;
           case gacha::Rarity::Super_Rare_Weapon: {
             four_star_weapon_counter = 0;
-            item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+            item_id = ResultPick(standard_four_star_weapon.data(), standard_four_star_weapon.size());
           } break;
           default: {
             error_code = 4;
           }
         }
       } else if (four_star_character_counter > 16) {
-        const ptrdiff_t weight3[2] = {255 + 2550 * (four_star_character_counter - 16), 255};
+          std::vector <int> weight3 = {255 + 2550 * (four_star_character_counter - 16), 255};
         switch (WRSpick(weight3, false)) {
           case gacha::Rarity::Super_Rare_Character: {
             four_star_character_counter = 0;
-            item_id = ResultPick(all_four_star_character, size_nup_four_c);
+            item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
           } break;
           case gacha::Rarity::Super_Rare_Weapon: {
             four_star_weapon_counter = 0;
-            item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+            item_id = ResultPick(standard_four_star_weapon.data(), standard_four_star_weapon.size());
           } break;
           default: {
             error_code = 4;
           }
         }
       } else {
-        const ptrdiff_t weight3[2] = {255 + 2550 * (four_star_weapon_counter - 16), 255};
+          std::vector <int> weight3 = {255 + 2550 * (four_star_weapon_counter - 16), 255};
         switch (WRSpick(weight3, false)) {
           case gacha::Rarity::Super_Rare_Character: {
             four_star_weapon_counter = 0;
-            item_id = ResultPick(standard_four_star_weapon, size_nup_four_w);
+            item_id = ResultPick(standard_four_star_weapon.data(), standard_four_star_weapon.size());
           } break;
           case gacha::Rarity::Super_Rare_Weapon: {
             four_star_character_counter = 0;
-            item_id = ResultPick(all_four_star_character, size_nup_four_c);
+            item_id = ResultPick(all_four_star_character.data(), all_four_star_character.size());
           } break;
           default: {
             error_code = 4;
@@ -1033,7 +987,7 @@ void gacha::GachaHelper::core_f_4() {
     } break;
     case gacha::Rarity::Rare_Weapon:
         //  随机一个三星武器
-        item_id = ResultPick(rare_weapon, 13);
+        item_id = ResultPick(rare_weapon.data(), rare_weapon.size());
       break;
     default: {
       error_code = 3;
@@ -1052,43 +1006,43 @@ void gacha::GachaHelper::core_f_5() {
       m_current_rarity = gacha::Rarity::Superior_Super_Rare_Characeter;
       
       five_star_assurance_number = 0;
-      item_id = ResultPick(standard_five_star_character, 5);
+      item_id = ResultPick(standard_five_star_character.data(), standard_five_star_character.size());
     } else if (item_kind_symbol < 57) {
       m_current_rarity = gacha::Rarity::Super_Rare_Character;
       four_star_assurance_number = 0;
-      item_id = ResultPick(all_four_star_character, 11);
+      item_id = ResultPick(all_four_star_character.data(), 11);
       if (item_id == 20) {
         is_noelle = false;
       }
     } else
         //  随机一个三星武器
-        item_id = ResultPick(rare_weapon, 13);
+        item_id = ResultPick(rare_weapon.data(), rare_weapon.size());
   } else if (four_star_assurance_number == 9) {
     if (item_kind_symbol < 6) {
       m_current_rarity = gacha::Rarity::Superior_Super_Rare_Characeter;
       
       five_star_assurance_number = 0;
-      item_id = ResultPick(standard_five_star_character, 5);
+      item_id = ResultPick(standard_five_star_character.data(), standard_five_star_character.size());
     } else if (item_kind_symbol < 567) {
       m_current_rarity = gacha::Rarity::Super_Rare_Character;
       four_star_assurance_number = 0;
-      item_id = ResultPick(all_four_star_character, 11);
+      item_id = ResultPick(all_four_star_character.data(), 11);
       if (item_id == 20) {
         is_noelle = false;
       }
     } else
         //  随机一个三星武器
-        item_id = ResultPick(rare_weapon, 13);
+        item_id = ResultPick(rare_weapon.data(), rare_weapon.size());
   } else {
     if (item_kind_symbol < 6) {
       m_current_rarity = gacha::Rarity::Superior_Super_Rare_Characeter;
       
       five_star_assurance_number = 0;
-      item_id = ResultPick(standard_five_star_character, 5);
+      item_id = ResultPick(standard_five_star_character.data(), standard_five_star_character.size());
     } else {
       m_current_rarity = gacha::Rarity::Super_Rare_Character;
       four_star_assurance_number = 0;
-      item_id = ResultPick(all_four_star_character, 11);
+      item_id = ResultPick(all_four_star_character.data(), 11);
       if (item_id == 20) {
         is_noelle = false;
       }
@@ -1100,106 +1054,191 @@ void gacha::GachaHelper::post_add() {
     countx++;
     five_star_assurance_number++;
     four_star_assurance_number++;
+    //if (chosen_event == 1 || chosen_event == 2 || chosen_event == 3) {
+    //    if (star != 4 || type == 3) {
+    //        unmet4_c++;
+    //    }
+    //    if (star != 4 || type != 3) {
+    //        unmet4_w++;
+    //    }
+    //}
+    //else if (chosen_event == 4) {
+    //    if (!(star == 5 && type == 1)) {
+    //        unmet5_c++;
+    //    }
+    //    if (!(star == 5 && type == 2)) {
+    //        unmet5_w++;
+    //    }
+    //    if (!(star == 4 && type == 1)) {
+    //        unmet4_c++;
+    //    }
+    //    if (!(star == 4 && type == 2)) {
+    //        unmet4_w++;
+    //    }
+    //}
 }
 
-void gacha::GachaHelper::SetBanner(BannerType chosen_banner, ptrdiff_t chosen_event_p) {
-    switch (chosen_banner) {
-        case BannerType::Character_Event_Wish: {
-            pool_stair_1(chosen_event_p);
-            if (chosen_event_p == 8) {
-                five_check[0] = 0;
-            }
-            if (chosen_event_p < 22) {
-                switch_e_should_be = 0;
-            } else {
-                switch_e_sav = switch_e_should_be;
-                switch_e_should_be = tempga4[chosen_event_p - 22];
-            }
-        } break;
-        case BannerType::Character_Event_Wish_2: {
-            pool_stair_2(chosen_event_p);
-            switch_e_sav = switch_e_should_be;
-            switch_e_should_be = tempgb4[chosen_event_p];
-        } break;
-        case BannerType::Weapon_Event_Wish: {
-            pool_stair_3(chosen_event_p);
-        } break;
-        case BannerType::Standard_Wish: {
-            pool_stair_4(chosen_event_p);
-        } break;
-        case BannerType::Beginner_Wish: {
-            ini_ams(all_four_star_character, 11, nup_four_cg1);
-        } break;
-        default: {
-            error_code = 7;
-        }
+//void gacha::GachaHelper::SetBanner(BannerType chosen_banner, int64_t chosen_event_p) {
+//    switch (chosen_banner) {
+//        case BannerType::Character_Event_Wish: {
+//            pool_stair_1(chosen_event_p);
+//            if (chosen_event_p == 8) {
+//                five_check[0] = 0;
+//            }
+//        } break;
+//        case BannerType::Character_Event_Wish_2: {
+//            pool_stair_2(chosen_event_p);
+//        } break;
+//        case BannerType::Weapon_Event_Wish: {
+//            pool_stair_3(chosen_event_p);
+//        } break;
+//        case BannerType::Standard_Wish: {
+//            pool_stair_4(chosen_event_p);
+//        } break;
+//        case BannerType::Beginner_Wish: {
+//            ini_ams(all_four_star_character.data(), 11, nup_four_cg1.data());
+//        } break;
+//        default: {
+//            error_code = 7;
+//        }
+//    }
+//}
+
+void gacha::CharacterGachaHelper::SetBanner(int chosen_event){
+    PoolStair(chosen_event);
+    if (chosen_event == 8) {
+        five_check[0] = 0;
     }
 }
 
-void gacha::GachaHelper::GachaGacha(BannerType chosen_banner, ptrdiff_t chosen_event_p) {
-    const size_t tempt = static_cast<size_t>(randomgen::generatorz());
-    gacha::GachaHelper::GachaInit(chosen_banner, chosen_event_p);
-    switch (chosen_banner) {
-        case BannerType::Character_Event_Wish: {
-            item_kind_symbol = tempt % 2;
-            CharacterEventWish();
-        } break;
-        case BannerType::Character_Event_Wish_2: {
-            item_kind_symbol = tempt % 2;
-            CharacterEventWish();
-        } break;
-        case BannerType::Weapon_Event_Wish: {
-            item_kind_symbol = tempt % 4;
-            core_f_3();
-        } break;
-        case BannerType::Standard_Wish: {
-            core_f_4();
-        } break;
-        case BannerType::Beginner_Wish: {
-            item_kind_symbol = tempt % 1000;
-            core_f_5();
-        } break;
-        default: {
-            error_code = 7;
-        }
-    }
+void gacha::CharacterGachaHelper::GachaGacha(BannerType chosen_banner, int64_t chosen_event_p) {
+    gacha::CharacterGachaHelper::GachaInit(chosen_banner, chosen_event_p);
+    CharacterEventWish();
     post_add();
 }
 
-void gacha::GachaHelper::GachaInit(BannerType chosen_banner, ptrdiff_t chosen_event_p) {
+//void gacha::GachaHelper::GachaGacha(BannerType chosen_banner, int64_t chosen_event_p) {
+//    const int tempt = static_cast<int>(randomgen::generatorz());
+//    gacha::GachaHelper::GachaInit(chosen_banner, chosen_event_p);
+//    switch (chosen_banner) {
+//        case BannerType::Weapon_Event_Wish: {
+//            item_kind_symbol = tempt % 4;
+//            core_f_3();
+//        } break;
+//        case BannerType::Standard_Wish: {
+//            core_f_4();
+//        } break;
+//        case BannerType::Beginner_Wish: {
+//            item_kind_symbol = tempt % 1000;
+//            core_f_5();
+//        } break;
+//        default: {
+//            error_code = 7;
+//        }
+//    }
+//    post_add();
+//}
+
+void gacha::GachaHelper::GachaInit(BannerType chosen_banner, int64_t chosen_event_p) {
+    const int random_num = static_cast<int>(randomgen::generatorz());
+    item_kind_symbol = random_num % 2;
     m_current_rarity = gacha::Rarity::Rare_Weapon;
-    item_id = 0;
-
-    gacha::GachaHelper::SetBanner(chosen_banner, chosen_event_p);
-}
-
-void gacha::GachaHelper::CleanUp() {
-    four_star_assurance_number = 1;
-    five_star_assurance_number = 1;
-    is_five_star_guarantee = false;
-    is_four_star_guarantee = false;
-    countx = 0;
-    is_noelle = true;
-
-    max_fivesth = 1;
-    min_fivesth = 1;
-    max_fivecount = 1;
-    min_fivecount = 1;
-    four_star_character_counter = 0;
-    four_star_weapon_counter = 0;
-    unmet5_c = 0;
-    unmet5_w = 0;
-    fate_points = 0;
-    for (size_t& ini : pcount) {
-        ini = 0;
-    }
-    kind_r_ach_11 = 0;
+    item_id = -1;
 }
 
 int gacha::GachaHelper::SetFateWeapon(const unsigned int fate_weapon) {
     if (fate_weapon != 0 && fate_weapon != 1 && fate_weapon != 2) {
         return 1;
     }
-    m_fate_weapon = static_cast<ptrdiff_t>(fate_weapon);
+    m_fate_weapon = static_cast<int64_t>(fate_weapon);
     return 0;
+}
+
+void gacha::CharacterGachaHelper::InitHelper() {
+    five_check.resize(UP_SSR_CHARACTER_COUNT, MAX_ITEMS);
+    four_check.resize(UP_SR_CHARACTER_COUNT, MAX_ITEMS);
+    probability_increased_four_stars.resize(UP_SR_CHARACTER_COUNT);
+    Init();
+}
+
+void gacha::CharacterGachaHelper::PoolStair(int chosen_event) {
+    if (chosen_event > 0 && chosen_event < 5) {
+        SetPool(chosen_event, nup_four_cg1.size(), nup_four_cg1.data());
+    }
+    else if (chosen_event < 12) {
+        SetPool(chosen_event, nup_four_cg2.size(), nup_four_cg2.data());
+    }
+    else if (chosen_event < 14) {
+        SetPool(chosen_event, nup_four_cg3.size(), nup_four_cg3.data());
+    }
+    else if (chosen_event < 18) {
+        SetPool(chosen_event, nup_four_cg4.size(), nup_four_cg4.data());
+    }
+    else if (chosen_event < 20) {
+        SetPool(chosen_event, nup_four_cg5.size(), nup_four_cg5.data());
+    }
+    else if (chosen_event < 22) {
+        SetPool(chosen_event, nup_four_cg6.size(), nup_four_cg6.data());
+    }
+    else if (chosen_event < 24) {
+        SetPool(chosen_event, nup_four_cg7.size(), nup_four_cg7.data());
+    }
+    else if (chosen_event < 26) {
+        SetPool(chosen_event, nup_four_cg8.size(), nup_four_cg8.data());
+    }
+    else if (chosen_event < 30) {
+        SetPool(chosen_event, nup_four_cg9.size(), nup_four_cg9.data());
+    }
+    else {
+        error_code = 5;
+    }
+}
+
+void gacha::CharacterGachaHelper::SetPool(const int64_t sw, const size_t size_nup_four_c_p,
+    const int* nup_four_cgm) {
+    probability_increased_five_stars.push_back(tempga3[sw]);
+    //  TODO  后面统一用vector
+    up_item_id = tempga3[sw];
+    ini_ams(probability_increased_four_stars.data(), UP_SR_CHARACTER_COUNT, tempga1[sw]);
+    all_four_star_character.resize(size_nup_four_c_p);
+    ini_ams(all_four_star_character.data(), all_four_star_character.size(), nup_four_cgm);
+    ini_ams(four_check.data(), UP_SR_CHARACTER_COUNT, tempga2[sw]);
+}
+
+gacha::GachaHelper* gacha::GachaHelperFactor::GetHelper(BannerType chosen_banner) {
+    auto helper = m_helpers.find(chosen_banner);
+    if (helper != m_helpers.end()) {
+        return helper->second;
+    }
+    else {
+        gacha::GachaHelper* helper = nullptr;
+        switch (chosen_banner) {
+            case BannerType::Character_Event_Wish: {
+                helper = new CharacterGachaHelper();
+                m_helpers[chosen_banner] = helper;
+            } break;
+            case BannerType::Character_Event_Wish_2: {
+                helper = new CharacterGachaHelper();
+                m_helpers[chosen_banner] = helper;
+            } break;
+            case BannerType::Weapon_Event_Wish: {
+                helper = new WeaponGachaHelper();
+                m_helpers[chosen_banner] = helper;
+            } break;
+            case BannerType::Standard_Wish: {
+                helper = new StandardGachaHelper();
+                m_helpers[chosen_banner] = helper;
+            } break;
+            case BannerType::Beginner_Wish: {
+                helper = new CharacterGachaHelper();
+                m_helpers[chosen_banner] = helper;
+            } break;
+            default: {
+                //  抛个异常
+
+            }
+        }
+        return helper;
+    }
+    return nullptr;
 }
