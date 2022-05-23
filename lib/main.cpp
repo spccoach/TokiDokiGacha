@@ -2,13 +2,15 @@
 #include "gacha.h"
 
 int main() {
-    gacha::GlobalDataManager::InitActivitysInfomationMap();
-    gacha::GlobalDataManager::InitActivitysInfomationMapEvent2();
+    gacha::GlobalDataManager::InitCharacterActivitysInfomationMap();
+    gacha::GlobalDataManager::InitCharacterActivitysInfomationMapEvent2();
+    gacha::GlobalDataManager::InitWeaponActivitysInfomationMap();
     gacha::GachaHelperFactory factory;
-    auto helper = factory.GetHelper(gacha::BannerType::Character_Event_Wish);
-    dynamic_cast<gacha::CharacterGachaHelper*>(helper)->SetBanner(11);
+    auto helper = factory.GetHelper(gacha::BannerType::Weapon_Event_Wish);
+    dynamic_cast<gacha::WeaponGachaHelper*>(helper)->SetBanner(11);
+    dynamic_cast<gacha::WeaponGachaHelper*>(helper)->SetFateWeapon(gacha::FateWeapon::Weapon_1);
     for (int i = 0; i < 100; i++) {
-        helper->GachaGacha(gacha::BannerType::Character_Event_Wish, 11);
+        helper->GachaGacha();
         if (helper->GetRarity() == gacha::Rarity::Superior_Super_Rare_Characeter) {
             std::cout << "rarity: SSR";
             std::cout << " item name: " << gacha::s_pname_cn[helper->GetItemId()]

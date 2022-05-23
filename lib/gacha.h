@@ -12,6 +12,8 @@
 #define MAX_WEIGHT 10000
 #define UP_SSR_CHARACTER_COUNT 1
 #define UP_SR_CHARACTER_COUNT 3
+#define UP_SSR_WEAPON_COUNT 2
+#define UP_SR_WEAPON_COUNT 5
 #define CHARACTEREVENT_SSR_CHARACTER_WEIGHT 60
 #define CHARACTEREVENT_SR_CHARACTER_WEIGHT 510
 #define CHARACTEREVENT_R_WEAPON_WEIGHT 9430
@@ -22,6 +24,18 @@
 #define CHARACTEREVENT_SR_PLACIDITY 16
 #define CHARACTEREVENT_SR_PLACIDITY_WEIGHT 255
 #define CHARACTEREVENT_SR_PLACIDITY_RADIO 2550
+
+#define WEAPONEVENT_SSR_CHARACTER_WEIGHT 70
+#define WEAPONEVENT_SR_CHARACTER_WEIGHT 600
+#define WEAPONEVENT_R_WEAPON_WEIGHT 9330
+#define WEAPONEVENT_SSR_RADIO_NORMAL 700
+#define WEAPONEVENT_SSR_RADIO_ADVANCED 350
+#define WEAPONEVENT_SR_RADIO_NORMAL 6600
+#define WEAPONEVENT_SR_RADIO_ADVANCED 3000
+#define WEAPONEVENT_SSR_GUARANTEE_NORMAL 62
+#define WEAPONEVENT_SSR_GUARANTEE_ADVANCED 73
+#define WEAPONEVENT_SR_GUARANTEE 8
+
 
 namespace gacha {
 enum class BannerType {
@@ -75,21 +89,23 @@ public:
         nup_four_cg37[21], nup_four_cg38[22], nup_four_cg39[23];
     static const int tempga4[9], tempgb4[6];
 
-    static void InitActivitysInfomationMap();
-    static void InitActivitysInfomationMapEvent2();
+    static void InitCharacterActivitysInfomationMap();
+    static void InitCharacterActivitysInfomationMapEvent2();
+    static void InitWeaponActivitysInfomationMap();
 
-    static bool GetActivitysInfomationByEvent(const int& event, const int*& activitys, size_t& activitys_size);
+    static bool GetCharacterActivitysInfomationByEvent(const int& event, const int*& activitys, size_t& activitys_size);
+    static bool GetCharacterActivitysInfomationByEvent2(const int& event, const int*& activitys, size_t& activitys_size);
+    static bool GetWeaponActivitysInfomationByEvent(const int& event, const int*& activitys, size_t& activitys_size);
 
-    static bool GetActivitysInfomationByEvent2(const int& event, const int*& activitys, size_t& activitys_size);
-
-    static std::map<int, std::pair<const int*, size_t>> m_event_activitys_size_map;
-    static std::map<int, std::pair<const int*, size_t>> m_event2_activitys_size_map;
+    static std::map<int, std::pair<const int*, size_t>> m_character_event_activitys_size_map;
+    static std::map<int, std::pair<const int*, size_t>> m_character_event2_activitys_size_map;
+    static std::map<int, std::pair<const int*, size_t>> m_weapon_event_activitys_size_map;
 };
 
 class GachaHelper {
 public:
     GachaHelper();
-    virtual void GachaGacha(const BannerType& chosen_banner, int chosen_event) = 0;
+    virtual void GachaGacha() = 0;
     Rarity GetRarity() { return m_current_rarity; };
     int GetItemId() { return m_item_id; };
 protected:
@@ -99,9 +115,6 @@ protected:
         const int* nup_four_cgm) = 0;
     void ini_ams(int* in, size_t ins, const int* out);
 
-    void set_pool_3(const int64_t sw, int size_nup_four_c_p,
-        const int* nup_four_cgm);
-    void pool_stair_3(int64_t chosen_banner_p);
     void pool_stair_4(int64_t chosen_banner_p);
 
     //  随机返回入参中的一个成员
@@ -114,22 +127,21 @@ protected:
     void core_f_4();
     void core_f_5();
     void post_add();
-    //void SetBanner(BannerType chosen_banner, int64_t chosen_event_p);
-    void GachaInit(const BannerType& chosen_banner, int chosen_event);
-    bool SetFateWeapon(const FateWeapon& fate_weapon);
+    void GachaInit();
 
     bool is_noelle;
     bool m_is_ssr_guarantee;  //  标记下一次五星是否是大保底
     bool m_is_sr_guarantee;  //  标记下一次四星是否是大保底
-    int m_item_id, m_current_item_kind_symbol, fate_points,
+    int m_item_id, m_current_item_kind_symbol,
         //  TODO 后面移除
         up_item_id,
         //  TODO 这个count没什么用，后面换个实现方式
         countx;
-    int m_sr_assurance_number,  //  此前多少抽没有抽到四星
-        m_ssr_assurance_number;  //  此前多少抽没有抽到五星
-    //   TODO 后面放到对应的helper中
-    FateWeapon m_fate_weapon;
+    int m_sr_assurance_number;  //  此前多少抽没有抽到四星
+    int m_ssr_assurance_number;  //  此前多少抽没有抽到五星
+    int m_sr_character_counter;  //  平稳机制，记录已经连续多少抽是四星角色
+    int m_sr_weapon_counter;  //  平稳机制，记录已经连续多少抽是四星武器
+
     Rarity m_current_rarity;
     std::vector<int> m_all_four_star_character;  //  当期所有四星角色，包括up角色
     //  TODO 用于校验是否需要重置保底，后面改个名
@@ -137,11 +149,10 @@ protected:
     std::vector<int> four_check;
 
     std::vector<int> m_probability_increased_ssr;  //  当期UP五星
-    std::vector<int> m_probability_increased_sr;  //  当期UP四星 
+    std::vector<int> m_probability_increased_sr;  //  当期UP四星
+    //  TODO 只有标配池子用
     int unmet5_w;
     int unmet5_c;
-    int m_sr_character_counter;  //  平稳机制，记录已经连续多少抽是四星角色
-    int m_sr_weapon_counter;  //  平稳机制，记录已经连续多少抽是四星武器
 };
 
 class CharacterGachaHelper : public GachaHelper {
@@ -151,7 +162,7 @@ public:
     }
     void SetEventType(const CharacterEventType& event_type);
     void SetBanner(int chosen_event = -1);
-    virtual void GachaGacha(const BannerType& chosen_banner, int chosen_event);
+    virtual void GachaGacha();
     
 protected:
     virtual void InitHelper();
@@ -167,18 +178,28 @@ private:
 
 class WeaponGachaHelper : public GachaHelper {
 public:
-    virtual void GachaGacha(const BannerType& chosen_banner, int chosen_event) {};
+    WeaponGachaHelper() : m_fate_weapon(FateWeapon::Weapon_None), fate_points(0) {
+        InitHelper();
+    }
+    virtual void GachaGacha();
+    void SetBanner(int chosen_event = -1);
+    bool SetFateWeapon(const FateWeapon& fate_weapon);
 
 protected:
-    virtual void InitHelper() {};
-    virtual void PoolStair(int chosen_event = -1) {};
+    virtual void InitHelper();
+    virtual void PoolStair(int chosen_event = -1);
     virtual void SetPool(const int index, const size_t item_count,
-        const int* items) {};
+        const int* items);
+    void WeaponEventWish();
+
+private:
+    FateWeapon m_fate_weapon;
+    int fate_points;
 };
 
 class StandardGachaHelper : public GachaHelper {
 public:
-    virtual void GachaGacha(const BannerType& chosen_banner, int chosen_event) {};
+    virtual void GachaGacha() {};
 
 protected:
     virtual void InitHelper() {};
@@ -189,7 +210,7 @@ protected:
 
 class BeginnerGachaHelper : public GachaHelper {
 public:
-    virtual void GachaGacha(const BannerType& chosen_banner, int chosen_event) {};
+    virtual void GachaGacha() {};
 
 protected:
     virtual void InitHelper() {};
